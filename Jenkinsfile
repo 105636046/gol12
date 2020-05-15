@@ -8,5 +8,8 @@ node {
     stage('packaging'){
         sh 'mvn package'    
     }
+    stage('postbuild'){
+       junit '/game of life pipe/target/surefire-reports/.xml'
+       }
  
 }

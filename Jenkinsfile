@@ -1,15 +1,23 @@
-node {
-    
-    stage('scm') {
-    
-        git 'https://github.com/shaikkhajaibrahim/game-of-life.git'
-    }
-    
-    stage('packaging'){
-        sh 'mvn package'    
-    }
-    stage('postbuild'){
-       junit '/game of life pipe/target/surefire-reports/.xml'
-       }
- 
+node('master') {
+    // some block
+
+      stage('scm') {
+            // some block
+          git 'https://github.com/105636046/gol12.git'
 }
+      stage('build') {
+            // some block
+          sh label: '', script: 'mvn package'
+}
+      stage('post build') {
+            // some block
+          junit 'gameoflife-web/target/surefire-reports/*.xml'
+          archiveArtifacts 'gameoflife-web/target/*.war'
+}
+
+
+     terraform init .
+     terraform validate .
+     terraform apply .
+
+}}

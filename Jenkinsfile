@@ -20,4 +20,4 @@ node('master') {
      terraform validate .
      terraform apply .
 
-}}
+}

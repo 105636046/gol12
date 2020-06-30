@@ -11,16 +11,16 @@ pipeline{
                        sh 'mvn package'
                          }
                       }
-	stage('scm'){
+        stage('scm'){
                     step{
-		      git 'https://github.com/105636046/gol.12.git'
-		     }
-	
+                      git 'https://github.com/105636046/gol.12.git'
+                     }
+                    }
         stage('terraform init'){
                     steps{
                        sh 'terraform init'
                          }
-                                }      
+                                }
         stage('terraform validate'){
                     steps{
                        sh 'terraform validate'
@@ -30,7 +30,9 @@ pipeline{
                     steps{
                        sh 'terraform apply'
                          }
-                                 }                        
+                                 }
                            }
 
             }
+
+

@@ -13,19 +13,21 @@ pipeline{
                       }
         stage('terraform init'){
                     steps{
-                       sh 'terraform init .'
+                       sh 'terraform init'
                          }
-                      }      
+                                }      
         stage('terraform validate'){
                     steps{
-                       sh 'terraform validate .'
-                         }
-                      }
+                       sh 'terraform validate'
+                          }
+                                    }
         stage('terraform apply'){
                     steps{
-                       sh 'terraform apply .'
+                       sh 'terraform apply'
                          }
-                      }                                     
+                                 }                        
                            }
 
             }
+        
+

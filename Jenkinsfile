@@ -3,7 +3,7 @@ node('master') {
 
       stage('scm') {
             // some block
-          git 'https://github.com/105636046/gol12.git'
+          ps://github.com/105636046/gol12.git'
           }
       stage('build') {
             // some block

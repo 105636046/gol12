@@ -12,11 +12,11 @@ pipeline{
        	                 }
 	              }  
         stage('postbuild'){
-	               steps{
-		            terraform init .
-			    terraform validate .
-			    terraform apply .
-			    }      
+	                   steps{
+		              terraform init .
+			      terraform validate .
+			      terraform apply .
+			        }      
 			  }
 	
 	   }

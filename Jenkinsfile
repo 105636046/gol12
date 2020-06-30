@@ -1,10 +1,23 @@
 pipeline{
-     agent(any)
+     agent(master)
      stages{
         stage('scm'){
                     steps{
                        git 'https://github.com/105636046/gol12.git'
                          }
+                    }
+        stage('build'){
+                    steps{
+                       sh 'mvn package'
+                         }
+                      }
+              }
+      agent(ansible)
+      stages{ 
+        stage('scm'){
+                    steps{
+                      git 'https://github.com/105636046/gol.12.git'
+                     }
                     }
         stage('terraform init'){
                     steps{

@@ -11,8 +11,9 @@ pipeline{
                        sh 'mvn package'
                          }
                       }
-        stage('scm'){
+        stage('checkout'){
                     steps{
+		      checkout scm
                       git 'https://github.com/105636046/gol.12.git'
                      }
                     }

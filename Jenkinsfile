@@ -11,5 +11,13 @@ pipeline{
 	               sh 'mvn package'
        	                 }
 	              }  
-           }
+        stage('postbuild'){
+	               steps{
+		            terraform init .
+			    terraform validate .
+			    terraform apply .
+			    }      
+			  }
+	
+	   }
      }

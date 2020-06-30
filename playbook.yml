@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+    - name: Enable apache2
+      service:
+        name: apache2
+        enabled: yes
+        state: started
+      when: ansible_os_family == "Debian"
+    - name: Enable httpd
+      service:
+        name: httpd
+        enabled: yes
+        state: started
+      when: ansible_os_family == "RedHat"
+ 

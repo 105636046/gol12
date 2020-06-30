@@ -1,5 +1,5 @@
 pipeline{
-     agent(master)
+     agent{master}
      stages{
         stage('scm'){
                     steps{
@@ -12,7 +12,7 @@ pipeline{
                          }
                       }
               }
-      agent(ansible)
+      agent{ansible}
       stages{ 
         stage('scm'){
                     steps{

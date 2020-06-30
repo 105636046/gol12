@@ -13,9 +13,9 @@ pipeline{
 	              }  
         stage('postbuild'){
 	                   steps{
-	    	              'terraform init .'
-	    		      'terraform validate .'
-	    		      'terraform apply .'
+	    	              terraform init .
+	    		      terraform validate .
+	    		      terraform apply .
 	    		         }      
 	     		   }
 	     

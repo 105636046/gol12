@@ -11,12 +11,21 @@ pipeline{
                        sh 'mvn package'
                          }
                       }
-        stage('Deploy'){
+        stage('terraform init'){
                     steps{
                        sh 'terraform init .'
+                         }
+                      }      
+        stage('terraform validate'){
+                    steps{
                        sh 'terraform validate .'
+                         }
+                      }
+        stage('terraform apply'){
+                    steps{
                        sh 'terraform apply .'
                          }
+                      }                                     
                            }
 
             }

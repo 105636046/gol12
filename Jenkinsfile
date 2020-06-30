@@ -1,12 +1,15 @@
 pipeline{
-     node(any)
+     agent(any)
      stages{
         stage('scm'){
-	    git 'https://github.com/105636046/gol12.git'
-	  }
+	            steps{
+	               git 'https://github.com/105636046/gol12.git'
+	                 }
+	            }
 	stage('build'){
-            sh 'mvn package'
-	    }
-	   } 
-
+	            steps{
+	               sh 'mvn package'
+       	                 }
+	              }  
+           }
      }

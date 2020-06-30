@@ -1,7 +1,8 @@
 pipeline{
-     agent{master}
+     agent none
      stages{
         stage('scm'){
+             agent{label 'master'} 
                     steps{
                        git 'https://github.com/105636046/gol12.git'
                          }
@@ -12,9 +13,9 @@ pipeline{
                          }
                       }
               }
-      agent{ansible}
-      stages{ 
+     stages{ 
         stage('scm'){
+            agent{label 'ansible'}
                     steps{
                       git 'https://github.com/105636046/gol.12.git'
                      }

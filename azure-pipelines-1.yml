@@ -9,24 +9,30 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(c627ab4c-5b33-4879-9184-05705de1d7b8)'
-    appType: 'webAppLinux'
-    WebAppName: 'Webapps'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'TOMCAT|8.5-jre8'
+stages:
+- stage: Build
+  jobs:
+  - job: 'Build'
+    steps:
+    - task: Maven@3
+      inputs:
+         mavenPomFile: 'pom.xml'
+         mavenOptions: '-Xmx3072m'
+         javaHomeOption: 'JDKVersion'
+         jdkVersionOption: '1.8'
+         jdkArchitectureOption: 'x64'
+         publishJUnitResults: true
+         testResultsFiles: '**/surefire-reports/TEST-*.xml'
+         goals: 'package'
+- stage: 
+  jobs:
+  - job: 'Deploy'
+    steps:
+      - task: AzureRmWebAppDeployment@4
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Free Trial(c627ab4c-5b33-4879-9184-05705de1d7b8)'
+          appType: 'webAppLinux'
+          WebAppName: 'Webapps'
+          packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+          RuntimeStack: 'TOMCAT|8.5-jre8'

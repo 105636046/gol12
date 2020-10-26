@@ -4,6 +4,6 @@ RUN git clone https://github.com/shaikkhajaibrahim/game-of-life.git && cd game-o
 
 FROM tomcat:8
 LABEL author='Khaja'
-COPY --from=mvn /game-of-life/gameoflife-web/target/openmrs.war /usr/local/tomcat/webapps/openmrs.war
+COPY --from=mvn /game-of-life/gameoflife-web/target/gameoflife.war /usr/local/tomcat/webapps/gameoflife.war
 EXPOSE 8080
 CMD ["catalina.sh", "run"]

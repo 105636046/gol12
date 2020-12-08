@@ -19,7 +19,7 @@ spec:
         app: gol
     spec:
       containers:
-      - image: 107636056/newgol
+      - image: 107636056/newgol:5
         name: newgol
         resources: {}
 status: {}

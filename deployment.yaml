@@ -2,33 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: gol12
+  creationTimestamp: null
+  labels:
+    app: gol
+  name: gol
 spec:
-    replicas: 3
-    selector:
-      matchLabels:
-        name: gol12
-    template:
-        metadata:
-            name: gol12
-        spec:
-            containers:
-                name: gol12
-                image: 107636056/newgol 
-                ports:
-                - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-    name: gol12
-spec:
-    type: LoadBalance
-    selector:
-        name: gol12
-        ports:
-        - protocol: TCP
-          port: 8080
-          targetPort: 8080
----
-    
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gol
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gol
+    spec:
+      containers:
+      - image: 107636056/newgol
+        name: newgol
+        resources: {}
+status: {}
